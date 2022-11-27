@@ -1,24 +1,32 @@
-<table class="table table-striped">
+<table class="table table-striped text-center">
     <thead>
         <tr>
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Talle</th>
-            <th>Sexo</th>
             <th>Precio</th>
             <th>Stock</th>
-            <!-- <th>Stock</th> -->
+            <th>Promoción</th>
+            <th>Cantidad</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let producto of productos" [ngClass]="{'clearance': producto.clearance}">
-            <td><img class="rounded" [src]="producto.imagen" [alt]="producto.nombre"/></td>
+            <td><img class="rounded img-thumbnail" [src]="producto.imagen" [alt]="producto.nombre" /></td>
             <td>{{producto.nombre}}</td>
             <td>{{producto.talle}}</td>
-            <td>{{producto.sexo}}</td>
             <td>{{producto.precio | currency}}</td>
-            <td><span class="badge text-bg-danger" *ngIf="producto.stock==0">Sin stock</span></td>
+            <td><span class="badge text-bg-danger" *ngIf="producto.stock==0">SIN STOCK</span></td>
             <td>{{producto.clearance}}</td>
+            <td>
+                <app-input-integer [(quantity)]="producto.quantity" [max]="producto.stock" *ngIf="producto.stock"
+                    (maxReached)="maxReached($event)">
+                </app-input-integer>
+            </td>
+            <td>
+                <button class="btn btn-succsess" (click)="addToCart(producto)">Comprar</button>
+            </td>
         </tr>
     </tbody>
 

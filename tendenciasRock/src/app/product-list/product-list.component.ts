@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ProductCartService } from '../product-cart.service';
+import { ProductDataService } from '../product-data.service';
 import { Producto } from './Producto';
 @Component({
   selector: 'app-product-list',
@@ -6,34 +8,27 @@ import { Producto } from './Producto';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  productos: Producto[] = [
-    {
-      imagen: 'assets/images/PinkFloyd.jpg',
-      nombre: 'Remera Pink Floyd',
-      talle: 'M',
-      sexo: 'Hombre',
-      precio: 4500,
-      stock: 0,
-      clearance: false,
-    },
-    {
-      imagen: 'assets/images/RemeraArtic1680.jpg',
-      nombre: 'Remera Arctic Monkeys',
-      talle: 'S',
-      sexo: 'Hombre',
-      precio: 4500,
-      stock: 10,
-      clearance: true,
-    },
-  ];
+  
+  productos: Producto[] = [];
 
-
-  constructor() {
-
+  constructor(
+    private cart: ProductCartService, 
+    private productsDataServece: ProductDataService) {
   }
 
   ngOnInit(): void {
+    this.productsDataServece.getAll()
+    .subscribe(productos => this.productos = productos);
+  }
 
+  maxReached(m: string){
+    alert(m);
+  }
+
+  addToCart(producto: Producto): void{
+    this.cart.addToCart(producto);
+    producto.stock -= producto.quantity;
+    producto.quantity = 0;
   }
 
 }

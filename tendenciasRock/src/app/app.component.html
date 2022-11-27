@@ -1,46 +1,46 @@
 <nav class="navbar navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="assets/icons/logoRock.png" alt="" height="60px" width="60px"/>
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img src="assets/icons/logoRock.png" alt="" height="60px" width="60px" />
     </a>
     <ul class="nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link" href="#">Inicio</a>
+        <a class="nav-link" [routerLink]="['/']">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Productos</a>
+        <a class="nav-link" [routerLink]="['/productos']">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/about']">Sobre nosotros</a>
       </li>
     </ul>
   </div>
 </nav>
 <div class="container">
   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel ">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/images/portada.jpg" class="portada" alt="...">
-          </div>
-          <!-- <div class="carousel-item">
-            <img src="assets/images/" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/images/portada.jpg" class="portada" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/images/portada2.jpg" class="d-block w-100" alt="...">
+      </div>
+      <!-- <div class="carousel-item">
             <img src="assets/images/" class="d-block w-100" alt="...">
           </div> -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <app-product-list>
-    
-          </app-product-list>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="container">
 
+    <router-outlet> </router-outlet> 
+    
+  </div>
 </div>
 <footer class="d-flex justify-content-around">
   <div class="d-flex justify-content-center justify-content-evenly align-items-center py-3 my-5 border-top border-dark">
     <div class="col-md-3 d-flex align-items-center">
-      <!-- <a class="navbar-brand mx-3" href="#"> <img src="" alt="..."
-                    height="40px" width="40px" /></a> -->
+      <a class="navbar-brand mx-3" href="#"><img src="assets/icons/logoRock.png" alt="" height="60px"
+          width="60px" /></a>
     </div>
     <span class="col-md-6 text-muted text-center d-flex ">© 2022 {{title}} - Indumentaria Online. Todos los derechos
       reservados.</span>
