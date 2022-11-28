@@ -1,7 +1,16 @@
-<h3>Carrito de compras</h3>
 
-<ul>
-    <li *ngFor="let producto of (cartList$ | async)">
-        {{producto.nombre}}: {{producto.quantity}}
-    </li>
-</ul>
+<div class="row pt-5 ">
+    <div class="col-sm">
+        <div class="card ">
+          <div class="card-body bg-success p-2 text-dark bg-opacity-10">
+            <h5 class="table-danger"><img src="assets/icons/icons8-carrito-de-compras-48.png" style="width: 1.3rem;"/> Productos seleccionados</h5>
+            <ul>
+                <li *ngFor="let producto of (cartList$ | async)">
+                    {{producto.nombre}}: {{producto.quantity}}
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+  </div>
